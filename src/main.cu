@@ -13,6 +13,7 @@
 #include <condition_variable>
 #include <chrono>
 #include <string>
+#include <algorithm>
 
 
 using namespace std;
@@ -117,6 +118,8 @@ uniform_real_distribution<double> dist(0, 1);
 
 void initialize_embeddings(long long num_vertices, int dimensions, emb_t*&embeddings_matrix);
 void print_embeddings(emb_t* embeddings, int num_vertices, int dimension, string fname, bool binary);
+void print_sorted_embeddings(emb_t* embeddings, int num_vertices, int dimension, string fname, bool binary);
+
 //void order_vertex_by_embeddings(emb_t* embeddings, int num_vertices, int dimension);
 void apply_dist_strategy(int n_epochs, int coarse_depth, int * & dist, string strategy);
 bool set_global_parameters(int argc, const char **argv);
@@ -579,15 +582,12 @@ int main(int argc, char * argv[]){
   cout <<"Printing the embeddings to " << output_file_name.c_str()<< " ...\n";
   if (binary_output != 2)
     print_embeddings(h_embeddings, csr->num_vertices, dimension,output_file_name.c_str(), binary_output); 
-    
+    print_sorted_embeddings(h_embeddings, csr->num_vertices, dimension,output_file_name.c_str(), binary_output); 
+
 
    // Appending "fscore" to the end of output_file_name
-  output_file_name = "fscore_" + output_file_name;
-  cout <<"Printing the F scores to " << output_file_name.c_str()<< " ...\n";
-
-
- // order_vertex_by_embeddings(h_embeddings, csr->num_vertices, dimension);
-
+  //output_file_name = "fscore_" + output_file_name;
+  //cout <<"Printing the F scores to " << output_file_name.c_str()<< " ...\n";
 
   return 0;
 }
@@ -604,25 +604,242 @@ void initialize_embeddings(long long num_vertices, int dimensions, emb_t*&embedd
     embeddings_matrix[i]=(dist(gen)-0.5)/float(dimensions);
 }  
 
-/* 
-// print embeddings in a text file
-void order_vertex_by_embeddings(emb_t* embeddings, int num_vertices, int dimension){
-  
-    
-    unsigned long long array_size = (unsigned long long) sizeof(emb_t) * dimension * num_vertices;
 
-    unsigned long long* array_to_sort = new unsigned long long[array_size];
-    for (unsigned long long i = 0; i < array_size; ++i) {
-        array_to_sort[i] = i;  
+
+
+int calculateCut(const std::vector<std::pair<int, int>>& edges, const std::vector<std::vector<int>>& partitions) {
+    int cut = 0;
+
+    for (const auto& edge : edges) {
+        int partition1 = -1, partition2 = -1;
+
+        // Find the partition for each vertex in the edge
+        for (int i = 0; i < partitions.size(); ++i) {
+            auto it1 = std::find(partitions[i].begin(), partitions[i].end(), edge.first);
+            auto it2 = std::find(partitions[i].begin(), partitions[i].end(), edge.second);
+
+            if (it1 != partitions[i].end()) {
+                partition1 = i;
+            }
+
+            if (it2 != partitions[i].end()) {
+                partition2 = i;
+            }
+        }
+
+        // Check if both vertices are in the same partition
+        if (partition1 != -1 && partition2 != -1 && partition1 != partition2) {
+            cut++;
+        }
     }
 
-        // Sort the array based on the values in the embedding array
-    std::sort(array_to_sort, array_to_sort + array_size, [&embeddings](unsigned long long a, unsigned long long b) {
-        return embeddings[a] < embeddings[b];
-    });
+    return cut;
+}
+
+
+
+
+// Define a struct to hold each row with its index and embedding values.
+struct EmbeddingRow {
+    int index;
+    vector<emb_t> values;
+};
+
+bool compareEmbeddings(const EmbeddingRow& a, const EmbeddingRow& b) {
+  //  printf("a: %lf, | b: %lf\n", a.values[1], b.values[1]);
+    return (a.values[0] > b.values[0]) ;
+}
+
+
+
+
+void partitionVertices(const std::vector<EmbeddingRow>& embeddingRows, int num_vertices, int N, std::vector<std::vector<int>>& partitions) {
+    partitions.clear();
+    partitions.resize(N);
+
+    int verticesPerPartition = num_vertices / N;
+    int remainder = num_vertices % N;
+    int currentPartition = 0;
+
+    for (int i = 0; i < num_vertices; ++i) {
+        partitions[currentPartition].push_back(embeddingRows[i].index);
+        if (partitions[currentPartition].size() == verticesPerPartition + (currentPartition < remainder ? 1 : 0)) {
+            currentPartition++;
+        }
+    }
+}
+
+
+void print_sorted_embeddings(emb_t* embeddings, int num_vertices, int dimension, string fname, bool binary) {
+   
+   // Read input from the MTX file
+    std::ifstream inputFile(input_file_name);
+
+    std::vector<std::pair<int, int>> edges;
+    int vertex1, vertex2;
+    while (inputFile >> vertex1 >> vertex2) {
+        edges.emplace_back(vertex1, vertex2);
+//            printf("Read edge: %d %d\n", vertex1, vertex2);
+
+    }
+   
+    vector<EmbeddingRow> embeddingRows;
+
+// Populate the vector of EmbeddingRow with index and values.
+for (int i = 0; i < num_vertices; i++) {
+    EmbeddingRow row;
+    row.index = i;
+    
+    // Clear the values vector for each row
+    row.values.clear();
+
+    for (int j = 0; j < dimension; j++) {
+        row.values.push_back(embeddings[i * dimension + j]);
+    }
+
+    embeddingRows.push_back(row);
+}
+
+/* // print the embedding vertex and values  
+ for (const auto& row : embeddingRows) {
+    printf("Index: %d, Value: %lf\n", row.index, row.values[0]); }
+ */
+
+// CALCULATE THE CUT BEFORE SORTING BY GOSH:
+
+    int N = 2;
+     // Divide the vertices into N partitions sequentially
+    std::vector<std::vector<int>> partitions(N);
+    partitionVertices(embeddingRows, num_vertices, N, partitions);
+   
+/* 
+     // Print the contents of each partition
+printf("BEFORE SORTING");
+    for (int i = 0; i < N; ++i) {
+        printf("Partition %d: ", i);
+        for (const auto& vertex : partitions[i]) {
+            printf("%d ", vertex);
+        }
+        printf("\n");
+    } 
+
+    printf("cut: %d ", cut); */
+
+
+    int cutBeforeSorting = calculateCut(edges, partitions);
+
+   // Output the result to a file
+    std::string outputFileCut = fname.substr(0, fname.find_last_of('.')) + "_CUT" + fname.substr(fname.find_last_of('.'));
+    std::ofstream outputFile(outputFileCut);
+    outputFile <<  cutBeforeSorting << std::endl;
+    
+// ***************************************************************
+// calculate cut after sorting the embeddings by gosh
+
+
+/*   
+
+   
+// Calculate the absolute differences
+std::vector<std::pair<std::pair<int, int>, double>> differences;
+for (const auto &edge : edges) {
+    int vertex1 = edge.first;
+    int vertex2 = edge.second;
+
+    double diff = 0.0;
+    for (int dim = 0; dim < dimension; ++dim) {
+        diff += std::abs(embeddingRows[vertex1].values[dim] - embeddingRows[vertex2].values[dim]);
+    }
+
+    differences.emplace_back(std::make_pair(vertex1, vertex2), diff);
+}
+
+// Sort based on absolute differences
+std::sort(differences.begin(), differences.end(), [](const std::pair<std::pair<int, int>, double> &a, const std::pair<std::pair<int, int>, double> &b) {
+    return std::abs(a.second) < std::abs(b.second);
+});
+
+    // Extract numeric part from input file name
+    size_t pos = input_file_name.find_first_of("0123456789");
+    std::string numeric_part = input_file_name.substr(pos, input_file_name.find_first_not_of("0123456789", pos) - pos);
+
+    // Construct output file name
+    std::string output_file_sorted = "output" + numeric_part + "_adj_sorted.txt";
+
+
+
+// Output sorted lines to a file
+    std::ofstream outputFile(output_file_sorted);
+    //fname = fname.substr(0, fname.find_last_of('.')) + "_SORTED" + fname.substr(fname.find_last_of('.'));
+
+    for (const auto &diff : differences) {
+      // outputFile << "1: " << diff.first.first << " | 2: " << diff.first.second << " | Diff: " << diff.second << std::endl;
+            outputFile << diff.first.first << " " << diff.first.second << std::endl;
 
     
-} */
+    }
+
+
+// Output sorted lines
+for (const auto &diff : differences) {
+    printf("1: %d | 2: %d | Diff: %lf\n", diff.first.first, diff.first.second, diff.second);
+}
+
+    // Close the output file
+    outputFile.close();
+ */
+
+    // Sort the vector based on the second column's values.
+    sort(embeddingRows.begin(), embeddingRows.end(), compareEmbeddings);
+
+     // Divide the vertices into N partitions sequentially
+    std::vector<std::vector<int>> partitions_sorted(N);
+    partitionVertices(embeddingRows, num_vertices, N, partitions_sorted);
+
+
+/*      // Print the contents of each partition
+printf("AFTER SORTING");
+    for (int i = 0; i < N; ++i) {
+        printf("Partition %d: ", i);
+        for (const auto& vertex : partitions_sorted[i]) {
+            printf("%d ", vertex);
+        }
+        printf("\n");
+    } 
+ */
+
+
+    int cutAfterSorting = calculateCut(edges, partitions_sorted);
+    outputFile << cutAfterSorting << std::endl;
+
+    // Close the output file
+    outputFile.close();
+
+    // Append "SORTED" to the filename.
+    fname = fname.substr(0, fname.find_last_of('.')) + "_SORTED" + fname.substr(fname.find_last_of('.'));
+
+    if (binary) {
+        ofstream output(fname, ios::binary);
+        output.write(reinterpret_cast<char*>(&num_vertices), sizeof(int));
+        output.write(reinterpret_cast<char*>(&dimension), sizeof(int));
+
+        for (const auto& row : embeddingRows) {
+          output.write(const_cast<char*>(reinterpret_cast<const char*>(row.values.data())), sizeof(emb_t) * dimension);
+        }
+    } else {
+        FILE* fout = fopen(fname.c_str(), "w");
+        fprintf(fout, "%d %d\n", num_vertices, dimension);
+
+        for (const auto& row : embeddingRows) {
+            fprintf(fout, "%d ", row.index);
+            for (const auto& value : row.values) {
+                fprintf(fout, "%f ", value);
+            }
+            fputc('\n', fout);
+        }
+        fclose(fout);
+    } 
+}
 
 // print embeddings in a text file
 void print_embeddings(emb_t* embeddings, int num_vertices, int dimension, string fname, bool binary){

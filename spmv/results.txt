@@ -1,0 +1,252 @@
+Executing row_per_block for ../execs/input1.txt
+../execs/input1.txt (seconds):	0.000212
+Executing row_per_thread for ../execs/input1.txt
+../execs/input1.txt (seconds):	0.025412
+Executing row_per_warp for ../execs/input1.txt
+../execs/input1.txt time (seconds):	0.000213
+------------------------------------
+Executing row_per_block for ../execs/output1_adj_sorted.txt
+../execs/output1_adj_sorted.txt (seconds):	0.026837
+Executing row_per_thread for ../execs/output1_adj_sorted.txt
+../execs/output1_adj_sorted.txt (seconds):	0.026332
+Executing row_per_warp for ../execs/output1_adj_sorted.txt
+../execs/output1_adj_sorted.txt time (seconds):	0.031856
+------------------------------------
+Executing row_per_block for ../execs/input3.txt
+../execs/input3.txt (seconds):	0.026662
+Executing row_per_thread for ../execs/input3.txt
+../execs/input3.txt (seconds):	0.026368
+Executing row_per_warp for ../execs/input3.txt
+../execs/input3.txt time (seconds):	0.026992
+------------------------------------
+Executing row_per_block for ../execs/output3_adj_sorted.txt
+../execs/output3_adj_sorted.txt (seconds):	0.029786
+Executing row_per_thread for ../execs/output3_adj_sorted.txt
+../execs/output3_adj_sorted.txt (seconds):	0.027134
+Executing row_per_warp for ../execs/output3_adj_sorted.txt
+../execs/output3_adj_sorted.txt time (seconds):	0.026226
+------------------------------------
+Executing row_per_block for ../execs/input4.txt
+../execs/input4.txt (seconds):	0.000276
+Executing row_per_thread for ../execs/input4.txt
+../execs/input4.txt (seconds):	0.026035
+Executing row_per_warp for ../execs/input4.txt
+../execs/input4.txt time (seconds):	0.000210
+------------------------------------
+Executing row_per_block for ../execs/output4_adj_sorted.txt
+../execs/output4_adj_sorted.txt (seconds):	0.026798
+Executing row_per_thread for ../execs/output4_adj_sorted.txt
+../execs/output4_adj_sorted.txt (seconds):	0.026435
+Executing row_per_warp for ../execs/output4_adj_sorted.txt
+../execs/output4_adj_sorted.txt time (seconds):	0.027105
+------------------------------------
+Executing row_per_block for ../execs/input5.txt
+../execs/input5.txt (seconds):	0.026525
+Executing row_per_thread for ../execs/input5.txt
+../execs/input5.txt (seconds):	0.026231
+Executing row_per_warp for ../execs/input5.txt
+../execs/input5.txt time (seconds):	0.066446
+------------------------------------
+Executing row_per_block for ../execs/output5_adj_sorted.txt
+../execs/output5_adj_sorted.txt (seconds):	0.028416
+Executing row_per_thread for ../execs/output5_adj_sorted.txt
+../execs/output5_adj_sorted.txt (seconds):	0.032354
+Executing row_per_warp for ../execs/output5_adj_sorted.txt
+../execs/output5_adj_sorted.txt time (seconds):	0.055561
+------------------------------------
+Executing row_per_block for ../execs/input6.txt
+../execs/input6.txt (seconds):	0.029964
+Executing row_per_thread for ../execs/input6.txt
+../execs/input6.txt (seconds):	0.026001
+Executing row_per_warp for ../execs/input6.txt
+../execs/input6.txt time (seconds):	0.026636
+------------------------------------
+Executing row_per_block for ../execs/output6_adj_sorted.txt
+../execs/output6_adj_sorted.txt (seconds):	0.035450
+Executing row_per_thread for ../execs/output6_adj_sorted.txt
+../execs/output6_adj_sorted.txt (seconds):	0.058896
+Executing row_per_warp for ../execs/output6_adj_sorted.txt
+../execs/output6_adj_sorted.txt time (seconds):	0.048404
+------------------------------------
+Executing row_per_block for ../execs/input7.txt
+../execs/input7.txt (seconds):	0.026867
+Executing row_per_thread for ../execs/input7.txt
+../execs/input7.txt (seconds):	0.025796
+Executing row_per_warp for ../execs/input7.txt
+../execs/input7.txt time (seconds):	0.026517
+------------------------------------
+Executing row_per_block for ../execs/output7_adj_sorted.txt
+../execs/output7_adj_sorted.txt (seconds):	0.035948
+Executing row_per_thread for ../execs/output7_adj_sorted.txt
+../execs/output7_adj_sorted.txt (seconds):	0.028615
+Executing row_per_warp for ../execs/output7_adj_sorted.txt
+../execs/output7_adj_sorted.txt time (seconds):	0.032698
+------------------------------------
+Executing row_per_block for ../execs/input9.txt
+../execs/input9.txt (seconds):	0.000188
+Executing row_per_thread for ../execs/input9.txt
+../execs/input9.txt (seconds):	0.000199
+Executing row_per_warp for ../execs/input9.txt
+../execs/input9.txt time (seconds):	0.000266
+------------------------------------
+Executing row_per_block for ../execs/output9_adj_sorted.txt
+../execs/output9_adj_sorted.txt (seconds):	0.032023
+Executing row_per_thread for ../execs/output9_adj_sorted.txt
+../execs/output9_adj_sorted.txt (seconds):	0.031984
+Executing row_per_warp for ../execs/output9_adj_sorted.txt
+../execs/output9_adj_sorted.txt time (seconds):	0.059824
+------------------------------------
+Executing row_per_block for ../execs/input10.txt
+../execs/input10.txt (seconds):	0.000189
+Executing row_per_thread for ../execs/input10.txt
+../execs/input10.txt (seconds):	0.000168
+Executing row_per_warp for ../execs/input10.txt
+../execs/input10.txt time (seconds):	0.000189
+------------------------------------
+Executing row_per_block for ../execs/output10_adj_sorted.txt
+../execs/output10_adj_sorted.txt (seconds):	0.038716
+Executing row_per_thread for ../execs/output10_adj_sorted.txt
+../execs/output10_adj_sorted.txt (seconds):	0.028357
+Executing row_per_warp for ../execs/output10_adj_sorted.txt
+../execs/output10_adj_sorted.txt time (seconds):	0.030156
+------------------------------------
+Executing row_per_block for ../execs/input12.txt
+../execs/input12.txt (seconds):	0.000212
+Executing row_per_thread for ../execs/input12.txt
+../execs/input12.txt (seconds):	0.000218
+Executing row_per_warp for ../execs/input12.txt
+../execs/input12.txt time (seconds):	0.000180
+------------------------------------
+Executing row_per_block for ../execs/output12_adj_sorted.txt
+../execs/output12_adj_sorted.txt (seconds):	0.033562
+Executing row_per_thread for ../execs/output12_adj_sorted.txt
+../execs/output12_adj_sorted.txt (seconds):	0.028021
+Executing row_per_warp for ../execs/output12_adj_sorted.txt
+../execs/output12_adj_sorted.txt time (seconds):	0.048678
+------------------------------------
+Executing row_per_block for ../execs/input13.txt
+../execs/input13.txt (seconds):	0.029655
+Executing row_per_thread for ../execs/input13.txt
+../execs/input13.txt (seconds):	0.027639
+Executing row_per_warp for ../execs/input13.txt
+../execs/input13.txt time (seconds):	0.034806
+------------------------------------
+Executing row_per_block for ../execs/output13_adj_sorted.txt
+../execs/output13_adj_sorted.txt (seconds):	0.060338
+Executing row_per_thread for ../execs/output13_adj_sorted.txt
+../execs/output13_adj_sorted.txt (seconds):	0.028814
+Executing row_per_warp for ../execs/output13_adj_sorted.txt
+../execs/output13_adj_sorted.txt time (seconds):	0.030097
+------------------------------------
+Executing row_per_block for ../execs/input14.txt
+../execs/input14.txt (seconds):	0.000215
+Executing row_per_thread for ../execs/input14.txt
+../execs/input14.txt (seconds):	0.000218
+Executing row_per_warp for ../execs/input14.txt
+../execs/input14.txt time (seconds):	0.000211
+------------------------------------
+Executing row_per_block for ../execs/output14_adj_sorted.txt
+../execs/output14_adj_sorted.txt (seconds):	0.028058
+Executing row_per_thread for ../execs/output14_adj_sorted.txt
+../execs/output14_adj_sorted.txt (seconds):	0.028087
+Executing row_per_warp for ../execs/output14_adj_sorted.txt
+../execs/output14_adj_sorted.txt time (seconds):	0.050194
+------------------------------------
+Executing row_per_block for ../execs/input15.txt
+../execs/input15.txt (seconds):	0.026472
+Executing row_per_thread for ../execs/input15.txt
+../execs/input15.txt (seconds):	0.057411
+Executing row_per_warp for ../execs/input15.txt
+../execs/input15.txt time (seconds):	0.027492
+------------------------------------
+Executing row_per_block for ../execs/output15_adj_sorted.txt
+../execs/output15_adj_sorted.txt (seconds):	0.038041
+Executing row_per_thread for ../execs/output15_adj_sorted.txt
+../execs/output15_adj_sorted.txt (seconds):	0.029616
+Executing row_per_warp for ../execs/output15_adj_sorted.txt
+../execs/output15_adj_sorted.txt time (seconds):	0.030240
+------------------------------------
+Executing row_per_block for ../execs/input16.txt
+../execs/input16.txt (seconds):	0.000187
+Executing row_per_thread for ../execs/input16.txt
+../execs/input16.txt (seconds):	0.000242
+Executing row_per_warp for ../execs/input16.txt
+../execs/input16.txt time (seconds):	0.000252
+------------------------------------
+Executing row_per_block for ../execs/output16_adj_sorted.txt
+../execs/output16_adj_sorted.txt (seconds):	0.045434
+Executing row_per_thread for ../execs/output16_adj_sorted.txt
+../execs/output16_adj_sorted.txt (seconds):	0.030734
+Executing row_per_warp for ../execs/output16_adj_sorted.txt
+../execs/output16_adj_sorted.txt time (seconds):	0.035567
+------------------------------------
+Executing row_per_block for ../execs/input17.txt
+../execs/input17.txt (seconds):	0.028260
+Executing row_per_thread for ../execs/input17.txt
+../execs/input17.txt (seconds):	0.025832
+Executing row_per_warp for ../execs/input17.txt
+../execs/input17.txt time (seconds):	0.029572
+------------------------------------
+Executing row_per_block for ../execs/output17_adj_sorted.txt
+../execs/output17_adj_sorted.txt (seconds):	0.028571
+Executing row_per_thread for ../execs/output17_adj_sorted.txt
+../execs/output17_adj_sorted.txt (seconds):	0.048159
+Executing row_per_warp for ../execs/output17_adj_sorted.txt
+../execs/output17_adj_sorted.txt time (seconds):	0.027480
+------------------------------------
+Executing row_per_block for ../execs/input18.txt
+../execs/input18.txt (seconds):	0.026858
+Executing row_per_thread for ../execs/input18.txt
+../execs/input18.txt (seconds):	0.027736
+Executing row_per_warp for ../execs/input18.txt
+../execs/input18.txt time (seconds):	0.028813
+------------------------------------
+Executing row_per_block for ../execs/output18_adj_sorted.txt
+../execs/output18_adj_sorted.txt (seconds):	0.027784
+Executing row_per_thread for ../execs/output18_adj_sorted.txt
+../execs/output18_adj_sorted.txt (seconds):	0.048850
+Executing row_per_warp for ../execs/output18_adj_sorted.txt
+../execs/output18_adj_sorted.txt time (seconds):	0.028387
+------------------------------------
+Executing row_per_block for ../execs/input19.txt
+../execs/input19.txt (seconds):	0.027044
+Executing row_per_thread for ../execs/input19.txt
+../execs/input19.txt (seconds):	0.037031
+Executing row_per_warp for ../execs/input19.txt
+../execs/input19.txt time (seconds):	0.030157
+------------------------------------
+Executing row_per_block for ../execs/output19_adj_sorted.txt
+../execs/output19_adj_sorted.txt (seconds):	0.068233
+Executing row_per_thread for ../execs/output19_adj_sorted.txt
+../execs/output19_adj_sorted.txt (seconds):	0.029142
+Executing row_per_warp for ../execs/output19_adj_sorted.txt
+../execs/output19_adj_sorted.txt time (seconds):	0.046213
+------------------------------------
+Executing row_per_block for ../execs/input20.txt
+../execs/input20.txt (seconds):	0.026343
+Executing row_per_thread for ../execs/input20.txt
+../execs/input20.txt (seconds):	0.026874
+Executing row_per_warp for ../execs/input20.txt
+../execs/input20.txt time (seconds):	0.031240
+------------------------------------
+Executing row_per_block for ../execs/output20_adj_sorted.txt
+../execs/output20_adj_sorted.txt (seconds):	0.030572
+Executing row_per_thread for ../execs/output20_adj_sorted.txt
+../execs/output20_adj_sorted.txt (seconds):	0.028153
+Executing row_per_warp for ../execs/output20_adj_sorted.txt
+../execs/output20_adj_sorted.txt time (seconds):	0.042939
+------------------------------------
+Executing row_per_block for ../execs/input21.txt
+../execs/input21.txt (seconds):	0.026896
+Executing row_per_thread for ../execs/input21.txt
+../execs/input21.txt (seconds):	0.026647
+Executing row_per_warp for ../execs/input21.txt
+../execs/input21.txt time (seconds):	0.027851
+------------------------------------
+Executing row_per_block for ../execs/output21_adj_sorted.txt
+../execs/output21_adj_sorted.txt (seconds):	0.063446
+Executing row_per_thread for ../execs/output21_adj_sorted.txt
+../execs/output21_adj_sorted.txt (seconds):	0.027071
+Executing row_per_warp for ../execs/output21_adj_sorted.txt
+../execs/output21_adj_sorted.txt time (seconds):	0.029369
+------------------------------------

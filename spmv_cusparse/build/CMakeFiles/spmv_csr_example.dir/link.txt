@@ -1,0 +1,1 @@
+/usr/bin/cc    CMakeFiles/spmv_csr_example.dir/spmv_csr_example.c.o  -o spmv_csr_example  -lcudart -lcusparse 

@@ -8,6 +8,7 @@ neg_samples=("1" "2" "3")
 bloom_filters=("0" "1")
 similarities=("0" "1")
 l_rates=("0.025" "0.00625" "0.1")
+cd execs
 
 for input_file in "${input_files[@]}"; do
     for alpha in "${alpha_values[@]}"; do

@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/beyzac/GOSH_PARTITIONING/spmv_cusparse/mmio.h
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+ctype.h
+-
+
+/home/beyzac/GOSH_PARTITIONING/spmv_cusparse/spmv_csr_example.c
+cuda_runtime_api.h
+-
+cusparse.h
+-
+stdio.h
+-
+stdlib.h
+-
+zlib.h
+-
+algorithm
+-
+string.h
+-
+time.h
+-
+mmio.h
+/home/beyzac/GOSH_PARTITIONING/spmv_cusparse/mmio.h
+

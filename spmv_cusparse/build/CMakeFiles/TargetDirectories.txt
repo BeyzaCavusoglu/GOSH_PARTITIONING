@@ -1,0 +1,3 @@
+/home/beyzac/GOSH_PARTITIONING/spmv_cusparse/build/CMakeFiles/rebuild_cache.dir
+/home/beyzac/GOSH_PARTITIONING/spmv_cusparse/build/CMakeFiles/edit_cache.dir
+/home/beyzac/GOSH_PARTITIONING/spmv_cusparse/build/CMakeFiles/spmv_csr_example.dir
